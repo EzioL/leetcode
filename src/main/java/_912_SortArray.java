@@ -5,7 +5,31 @@
  * created on 2020/3/31
  */
 public class _912_SortArray {
+
+    // 选择排序
     static class Solution {
+        public int[] sortArray(int[] nums) {
+            int n = nums.length;
+            for (int i = 0; i < n; i++) {
+                int minIndex = i;
+                for (int j = i + 1; j < n; j++) {
+                    if (nums[minIndex] > nums[j]) {
+                        minIndex = j;
+                    }
+                }
+                // swap
+                int t = nums[i];
+                nums[i] = nums[minIndex];
+                nums[minIndex] = t;
+            }
+            return nums;
+        }
+
+    }
+
+
+    // 堆排序
+    static class Solution2 {
         public int[] sortArray(int[] nums) {
             //1.构建大顶堆
             for (int i = nums.length / 2 - 1; i >= 0; i--) {
