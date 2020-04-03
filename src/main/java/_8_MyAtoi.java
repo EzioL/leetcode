@@ -1,4 +1,5 @@
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @creed: Here be dragons !
@@ -51,6 +52,45 @@ public class _8_MyAtoi {
         }
         return res * flag;
 
+    }
+
+
+    static class Solution {
+        public int myAtoi(String str) {
+            if (null == str || str.trim().length() == 0) {
+                return 0;
+            }
+            char[] chars = str.trim().toCharArray();
+
+            int negative = 1;
+            int idx = 0;
+            if (chars[0] == '-') {
+                negative = -1;
+                idx++;
+            } else if (chars[idx] == '+') {
+                idx++;
+            } else if (!Character.isDigit(chars[idx])) {
+                // 其他符号
+                return 0;
+            }
+            int ans = 0;
+            while (idx < chars.length && Character.isDigit(chars[idx])) {
+                int digit = chars[idx] - '0';
+                if (ans > (Integer.MAX_VALUE - digit) / 10) {
+                    return negative < 0 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+                }
+                ans = ans * 10 + digit;
+                idx++;
+            }
+            return ans * negative;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        String s = " 123 ";
+        System.out.println(s.trim());
+        System.out.println(Character.isDigit("1".toCharArray()[0]));
     }
 
 }
