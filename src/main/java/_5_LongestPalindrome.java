@@ -11,6 +11,8 @@ public class _5_LongestPalindrome {
             if (s == null || s.isEmpty()) {
                 return "";
             }
+            // 我们知道回文串一定是对称的，
+            // 所以我们可以每次循环选择一个中心，进行左右扩展，判断左右字符是否相等即可。
             int start = 0, end = 0;
             for (int i = 0; i < s.length(); i++) {
                 int len1 = expandAroundCenter(s, i, i);
