@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -40,7 +41,7 @@ public class _23_MergeKLists {
     // 优先队列
     static class Solution2 {
         public ListNode mergeKLists(ListNode[] lists) {
-            Queue<ListNode> pq = new PriorityQueue<>((v1, v2) -> v1.val - v2.val);
+            Queue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(v -> v.val));
 
             for (ListNode node : lists) {
                 if (node != null) {
