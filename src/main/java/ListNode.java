@@ -13,4 +13,12 @@ public class ListNode {
     ListNode(int x) {
         val = x;
     }
+    ListNode(int x , ListNode next) {
+        val = x;
+        this.next = next;
+    }
+
+    public void setNext(ListNode next) {
+        this.next = next;
+    }
 }
